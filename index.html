@@ -1,0 +1,1280 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
+  
+  <title>Aryan Katoch | Director & Co-Founder — Arvinex Venture Private Limited</title>
+  <meta name="description" content="Aryan Katoch — Director & Co-Founder at Arvinex Venture Private Limited. Architecting high-converting 360° hybrid marketing engines for local businesses through dominant digital scale and tactical offline execution." />
+  <meta name="keywords" content="Aryan Katoch, Arvinex Venture Private Limited, Local Business Marketing, Digital Marketing, Offline Marketing, Reel Video Editing, Marketing Strategy, Sarthak Sharma" />
+  <meta name="author" content="Aryan Katoch" />
+
+  <!-- Favicon Monogram -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%23020204'/><text x='50%' y='55%' font-family='sans-serif' font-weight='900' font-size='50' fill='%2300F0FF' dominant-baseline='middle' text-anchor='middle'>AK</text></svg>" />
+
+  <!-- Google Web Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&family=Syne:wght@700;800;900&display=swap" rel="stylesheet" />
+
+  <!-- Main Stylesheet -->
+  <link rel="stylesheet" href="styles.css" />
+
+  <!-- Vendor Scripts (Local Assets with CDN Fallback) -->
+  <script src="assets/vendor/three.min.js"></script>
+  <script>
+    if (typeof THREE === 'undefined') {
+      document.write('<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"><\/script>');
+    }
+  </script>
+  <script src="assets/vendor/lucide.min.js"></script>
+  <script>
+    if (typeof lucide === 'undefined') {
+      document.write('<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"><\/script>');
+    }
+  </script>
+</head>
+<body>
+
+  <!-- Background Cyber Atmosphere & Ambient Glows -->
+  <div class="bg-ambient-layer"></div>
+  <div class="bg-cyber-grid"></div>
+  <div class="bg-scanline"></div>
+
+  <!-- 3D Interactive WebGL Canvas Container -->
+  <div id="webgl-canvas-container">
+    <canvas id="three-canvas"></canvas>
+  </div>
+
+  <!-- Interactive 3D Canvas Status Badge -->
+  <div class="canvas-interactive-badge">
+    <span class="pulse-dot"></span>
+    <span>3D ENGINE ACTIVE · DRAG TO ROTATE</span>
+  </div>
+
+  <!-- Custom Magnetic Cursor -->
+  <div id="cursor-dot" class="custom-cursor-dot"></div>
+  <div id="cursor-ring" class="custom-cursor-ring"></div>
+
+  <!-- Interactive Toast Notification -->
+  <div id="toast-notification" class="toast-notification">
+    <span class="toast-dot"></span>
+    <span id="toast-message">Notification</span>
+  </div>
+
+  <!-- Mobile Drawer Menu Overlay -->
+  <div id="mobile-drawer" class="mobile-drawer-overlay">
+    <div class="mobile-drawer-top">
+      <div class="brand-monogram-container">
+        <div class="monogram-badge">AK</div>
+        <div class="brand-titles">
+          <span class="brand-name">ARYAN KATOCH</span>
+          <span class="brand-company">Arvinex Venture</span>
+        </div>
+      </div>
+      <button id="mobile-drawer-close" class="mobile-nav-toggle" aria-label="Close Menu">
+        <i data-lucide="x"></i>
+      </button>
+    </div>
+
+    <div class="mobile-drawer-links">
+      <a href="#about" class="mobile-drawer-link">
+        <span>About Aryan</span>
+        <i data-lucide="arrow-up-right"></i>
+      </a>
+      <a href="#services" class="mobile-drawer-link">
+        <span>Services</span>
+        <i data-lucide="arrow-up-right"></i>
+      </a>
+      <a href="#approach" class="mobile-drawer-link">
+        <span>Hybrid Approach</span>
+        <i data-lucide="arrow-up-right"></i>
+      </a>
+      <a href="#impact" class="mobile-drawer-link">
+        <span>Case Studies</span>
+        <i data-lucide="arrow-up-right"></i>
+      </a>
+      <a href="#founders" class="mobile-drawer-link">
+        <span>Leadership</span>
+        <i data-lucide="arrow-up-right"></i>
+      </a>
+      <a href="#contact" class="mobile-drawer-link">
+        <span>Contact</span>
+        <i data-lucide="arrow-up-right"></i>
+      </a>
+    </div>
+
+    <div class="mobile-drawer-contact-card">
+      <div style="font-family: var(--font-mono); font-size: 11px; color: var(--color-brand-cyan); margin-bottom: 8px;">DIRECT AGENCY HOTLINE</div>
+      <div style="font-family: var(--font-mono); font-size: 16px; font-weight: 700; margin-bottom: 14px;">+91 8894402974</div>
+      <a href="https://wa.me/918894402974?text=Hi%20Aryan,%20I'd%20like%20to%20discuss%20growing%20my%20business%20with%20Arvinex%20Venture." target="_blank" class="contact-action-btn whatsapp" style="width: 100%; justify-content: center;">
+        <i data-lucide="message-circle"></i>
+        <span>Chat on WhatsApp</span>
+      </a>
+    </div>
+  </div>
+
+  <!-- App Container Shell -->
+  <div class="app-container">
+
+    <!-- ==========================================================================
+         NAVIGATION BAR
+         ========================================================================== -->
+    <header id="site-header" class="site-header">
+      <div class="content-max-width header-inner">
+        
+        <a href="#hero" class="brand-monogram-container">
+          <div class="monogram-badge">AK</div>
+          <div class="brand-titles">
+            <span class="brand-name">ARYAN KATOCH</span>
+            <span class="brand-company">Arvinex Venture Pvt. Ltd.</span>
+          </div>
+        </a>
+
+        <nav class="nav-links-desktop">
+          <a href="#about" class="nav-link-item">About</a>
+          <a href="#services" class="nav-link-item">Services</a>
+          <a href="#approach" class="nav-link-item">Approach</a>
+          <a href="#impact" class="nav-link-item">Case Studies</a>
+          <a href="#founders" class="nav-link-item">Leadership</a>
+          <a href="#contact" class="nav-link-item">Contact</a>
+        </nav>
+
+        <div class="header-action-group">
+          <!-- Audio Synthesizer Toggle -->
+          <button id="audio-toggle-btn" class="audio-toggle-btn" title="UI Audio: Muted (Click to Enable)" aria-label="Toggle UI Audio">
+            <i data-lucide="volume-2"></i>
+          </button>
+
+          <!-- Quick WhatsApp CTA -->
+          <a href="https://wa.me/918894402974?text=Hi%20Aryan,%20I'd%20like%20to%20discuss%20growing%20my%20business%20with%20Arvinex%20Venture." target="_blank" class="header-whatsapp-cta">
+            <i data-lucide="message-circle" style="width: 15px; height: 15px;"></i>
+            <span>WhatsApp</span>
+          </a>
+
+          <!-- Mobile Nav Hamburger -->
+          <button id="mobile-nav-toggle" class="mobile-nav-toggle" aria-label="Toggle Mobile Navigation">
+            <i data-lucide="menu"></i>
+          </button>
+        </div>
+
+      </div>
+    </header>
+
+    <main>
+      <!-- ==========================================================================
+           HERO SECTION
+           ========================================================================== -->
+      <section id="hero" class="hero-section">
+        <div class="content-max-width">
+          <div class="hero-grid">
+            
+            <div class="hero-content">
+              
+              <!-- Circular Profile Photo Cluster -->
+              <div class="hero-photo-cluster">
+                <div class="profile-photo-frame hero-photo-frame">
+                  <img src="assets/images/aryan-katoch-placeholder.svg" alt="Aryan Katoch" class="profile-photo-img" />
+                  <span class="photo-status-indicator" title="Aryan Katoch · Director Active"></span>
+                </div>
+                <div>
+                  <div class="status-tag-badge" style="margin-bottom: 0;">
+                    <span class="indicator-dot"></span>
+                    <span>Director & Co-Founder · Arvinex Venture</span>
+                  </div>
+                  <div style="font-family: var(--font-mono); font-size: 11px; color: var(--color-brand-cyan); margin-top: 6px; letter-spacing: 0.1em;">
+                    // OMNI-CHANNEL GROWTH ARCHITECT
+                  </div>
+                </div>
+              </div>
+
+              <h1 class="hero-main-title">
+                ARYAN<br />
+                <span class="gradient-span">KATOCH</span>
+              </h1>
+
+              <div class="hero-role-title">
+                <span>Director & Co-Founder</span>
+                <span class="agency-highlight">Arvinex Venture Private Limited</span>
+              </div>
+
+              <p class="hero-description-lead">
+                Scaling ambitious local businesses through the power of <strong>360° Hybrid Marketing</strong> — uniting relentless algorithmic digital visibility with tangible, high-impact ground-level offline execution.
+              </p>
+
+              <div class="hero-cta-cluster">
+                <a href="#contact" class="btn-primary-glow">
+                  <span>Schedule Growth Audit</span>
+                  <i data-lucide="arrow-right"></i>
+                </a>
+                <a href="#approach" class="btn-secondary-cyber">
+                  <span>Explore 360° Approach</span>
+                  <i data-lucide="layers"></i>
+                </a>
+              </div>
+
+              <!-- Executive Metrics Strip -->
+              <div class="hero-metrics-strip">
+                <div class="metric-box">
+                  <div class="metric-number-wrap">
+                    <span class="accent-symbol">₹</span>
+                    <span data-counter-target="5" data-counter-suffix="Cr+">₹5Cr+</span>
+                  </div>
+                  <span class="metric-label-text">Revenue Generated</span>
+                </div>
+                <div class="metric-box">
+                  <div class="metric-number-wrap">
+                    <span data-counter-target="45" data-counter-suffix="+">45+</span>
+                  </div>
+                  <span class="metric-label-text">Local Brands Scaled</span>
+                </div>
+                <div class="metric-box">
+                  <div class="metric-number-wrap">
+                    <span data-counter-target="3.8" data-counter-suffix="x">3.8x</span>
+                  </div>
+                  <span class="metric-label-text">Avg Footfall Multiplier</span>
+                </div>
+                <div class="metric-box">
+                  <div class="metric-number-wrap">
+                    <span data-counter-target="100" data-counter-suffix="%">100%</span>
+                  </div>
+                  <span class="metric-label-text">Online + Offline Synergy</span>
+                </div>
+              </div>
+
+            </div>
+
+            <!-- Hero Right 3D Visual Console Card -->
+            <div class="hero-console-card">
+              <div class="console-header">
+                <div class="console-dots">
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                </div>
+                <div class="console-engine-id">ARVINEX_HYBRID_ENGINE // v4.2</div>
+              </div>
+
+              <div class="console-data-rows">
+                <div class="data-row">
+                  <span class="row-label"><i data-lucide="activity" style="width: 14px;"></i> System Architecture</span>
+                  <span class="row-val cyan">Dual-Funnel Hybrid</span>
+                </div>
+                <div>
+                  <div class="data-row">
+                    <span class="row-label"><i data-lucide="globe" style="width: 14px;"></i> Digital Scale Pacing</span>
+                    <span class="row-val">99.4% Optimization</span>
+                  </div>
+                  <div class="console-progress-track">
+                    <div class="console-progress-bar" style="width: 92%;"></div>
+                  </div>
+                </div>
+
+                <div>
+                  <div class="data-row">
+                    <span class="row-label"><i data-lucide="map-pin" style="width: 14px;"></i> Ground Offline Saturation</span>
+                    <span class="row-val emerald">100% Local Moat</span>
+                  </div>
+                  <div class="console-progress-track">
+                    <div class="console-progress-bar" style="width: 88%; background: linear-gradient(90deg, #00FF9D, #00F0FF);"></div>
+                  </div>
+                </div>
+
+                <div class="data-row">
+                  <span class="row-label"><i data-lucide="video" style="width: 14px;"></i> Short-Form Retention Engine</span>
+                  <span class="row-val">82% Avg View Duration</span>
+                </div>
+
+                <div class="data-row">
+                  <span class="row-label"><i data-lucide="shield-check" style="width: 14px;"></i> Client Capacity Status</span>
+                  <span class="row-val emerald">Select Openings Available</span>
+                </div>
+              </div>
+
+              <div style="margin-top: 24px; padding-top: 18px; border-top: 1px solid rgba(255, 255, 255, 0.08); display: flex; align-items: center; justify-content: space-between;">
+                <div style="font-family: var(--font-mono); font-size: 11px; color: var(--color-text-muted);">
+                  DIRECTOR DESK · ARVINEX VENTURE
+                </div>
+                <div style="display: flex; gap: 6px;">
+                  <span style="display: inline-block; width: 6px; height: 6px; border-radius: 50%; background: var(--color-brand-cyan);"></span>
+                  <span style="display: inline-block; width: 6px; height: 6px; border-radius: 50%; background: var(--color-brand-emerald);"></span>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- ==========================================================================
+           ABOUT SECTION
+           ========================================================================== -->
+      <section id="about" class="section-wrapper">
+        <div class="content-max-width">
+          
+          <div class="section-tagline-pill reveal-on-scroll">
+            <i data-lucide="user-check" style="width: 14px;"></i>
+            <span>The Mind Behind The Engine</span>
+          </div>
+
+          <h2 class="section-heading-kinetic reveal-on-scroll">
+            Why Most Local Marketing Fails — <br />
+            <span class="text-gradient-cyan">And How We Engineered The Fix</span>
+          </h2>
+
+          <div class="about-hero-grid">
+            
+            <div class="about-bio-text reveal-on-scroll">
+              <p>
+                I am <strong>Aryan Katoch</strong>, Director & Co-Founder of <strong>Arvinex Venture Private Limited</strong>. For years, I watched hard-working local business owners — from premium restaurant operators and healthcare clinics to luxury wellness centers and high-street boutiques — burn enormous budgets on marketing agencies that delivered nothing more than vanity reports.
+              </p>
+              
+              <p>
+                The fundamental flaw in modern local agency models is <strong>channel fragmentation</strong>. Purely digital agencies sit behind remote screens and run generic Facebook ads with zero awareness of neighborhood traffic, local trust barriers, or in-store customer psychology. Conversely, traditional print and offline vendors print flyers and hoardings with no tracking, no conversion funnels, and no modern brand appeal.
+              </p>
+
+              <p>
+                At <strong>Arvinex Venture</strong>, we tore down that wall. We pioneered the <strong>Omni-Local Domination Framework</strong>: an integrated powerhouse where surgical digital visibility (Google Local 3-Pack rankings, geo-fenced PPC ads, and viral cinematic short-form reels) works in direct lockstep with tactical ground-level offline execution (precision BTL activations, targeted door-to-door distribution, and strategic merchant cross-promotions).
+              </p>
+
+              <div class="about-quote-box">
+                <p>
+                  "We don't count vanity likes or empty impressions. We measure the only two numbers that truly dictate local business survival: verified in-store footfall and cash register velocity."
+                </p>
+                <div class="quote-author">
+                  — Aryan Katoch · Director & Co-Founder, Arvinex Venture Private Limited
+                </div>
+              </div>
+            </div>
+
+            <!-- Executive Profile Card -->
+            <div class="executive-card-3d reveal-on-scroll">
+              <div class="exec-header-badge">
+                <span class="exec-badge-pill">Executive Profile</span>
+                <i data-lucide="shield" style="color: var(--color-brand-cyan);"></i>
+              </div>
+
+              <div class="exec-name-title">Aryan Katoch</div>
+              <div class="exec-subtitle">Director & Co-Founder · Business Strategy & Offline Execution</div>
+
+              <div class="exec-details-list">
+                <div class="exec-item">
+                  <i data-lucide="building-2" class="exec-icon"></i>
+                  <div>
+                    <div class="exec-label">Agency Enterprise</div>
+                    <div class="exec-val">Arvinex Venture Private Limited</div>
+                  </div>
+                </div>
+
+                <div class="exec-item">
+                  <i data-lucide="compass" class="exec-icon"></i>
+                  <div>
+                    <div class="exec-label">Core Mandate</div>
+                    <div class="exec-val">Omni-Channel Local Growth & Hybrid Strategy</div>
+                  </div>
+                </div>
+
+                <div class="exec-item">
+                  <i data-lucide="target" class="exec-icon"></i>
+                  <div>
+                    <div class="exec-label">Specialization</div>
+                    <div class="exec-val">High-Conversion Digital PPC + Precision Offline BTL</div>
+                  </div>
+                </div>
+
+                <div class="exec-item">
+                  <i data-lucide="phone-call" class="exec-icon"></i>
+                  <div>
+                    <div class="exec-label">Direct Executive Line</div>
+                    <div class="exec-val">+91 8894402974</div>
+                  </div>
+                </div>
+
+                <div class="exec-item">
+                  <i data-lucide="mail" class="exec-icon"></i>
+                  <div>
+                    <div class="exec-label">Official Correspondence</div>
+                    <div class="exec-val">aryankatoch236@gmail.com</div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+
+          <!-- Strategic Pillars 4-Card Grid -->
+          <div class="pillars-grid">
+            
+            <div class="pillar-card reveal-on-scroll">
+              <div class="pillar-index">// PILLAR 01</div>
+              <h3 class="pillar-title">Ground-Truth Reconnaissance</h3>
+              <p class="pillar-desc">
+                We conduct street-level pedestrian flow analysis, evaluate competitor blind spots within a 15km perimeter, and study the exact demographic nuances of your local consumer base.
+              </p>
+            </div>
+
+            <div class="pillar-card reveal-on-scroll">
+              <div class="pillar-index">// PILLAR 02</div>
+              <h3 class="pillar-title">Digital Hegemony</h3>
+              <p class="pillar-desc">
+                Locking down the #1 spot on Google Maps & Local Pack, deploying geo-fenced PPC ads, and pumping high-retention cinematic Reels that turn your business into an iconic local landmark.
+              </p>
+            </div>
+
+            <div class="pillar-card reveal-on-scroll">
+              <div class="pillar-index">// PILLAR 03</div>
+              <h3 class="pillar-title">Tactical Offline Saturation</h3>
+              <p class="pillar-desc">
+                High-converting print drops, interactive activation booths, point-of-sale branding, and strategic merchant cross-promotions that capture customers directly in their physical neighborhoods.
+              </p>
+            </div>
+
+            <div class="pillar-card reveal-on-scroll">
+              <div class="pillar-index">// PILLAR 04</div>
+              <h3 class="pillar-title">Unit-Economic ROI Focus</h3>
+              <p class="pillar-desc">
+                Every rupee invested is measured against Customer Acquisition Cost (CAC), Lifetime Value (LTV), and real cash-register receipts. Zero vanity metrics — only bottom-line profit.
+              </p>
+            </div>
+
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ==========================================================================
+           SERVICES SECTION (3D INTERACTIVE CARDS)
+           ========================================================================== -->
+      <section id="services" class="section-wrapper">
+        <div class="content-max-width">
+          
+          <div class="section-tagline-pill reveal-on-scroll">
+            <i data-lucide="cpu" style="width: 14px;"></i>
+            <span>Full-Spectrum Capabilities</span>
+          </div>
+
+          <h2 class="section-heading-kinetic reveal-on-scroll">
+            Four Pillars Of Local Dominance — <br />
+            <span class="text-gradient-cyan">Engineered For Exponential Scale</span>
+          </h2>
+
+          <p class="section-subhead-lead reveal-on-scroll">
+            Each service operates as an autonomous conversion engine, but when combined under our 360° framework, they build an impenetrable competitive moat around your local business.
+          </p>
+
+          <div class="services-deck">
+
+            <!-- Service 1: Digital / Online Marketing -->
+            <div class="service-card-3d reveal-on-scroll">
+              <div class="card-specular-shine"></div>
+              
+              <div class="service-card-header">
+                <div class="service-icon-box">
+                  <i data-lucide="globe-2"></i>
+                </div>
+                <div class="service-kpi-pill">+180% Inbound Calls</div>
+              </div>
+
+              <h3 class="service-title">Digital & Online Marketing</h3>
+              
+              <p class="service-lead-summary">
+                Laser-targeted customer acquisition that ensures your business is the immediate, undisputed first choice whenever a high-intent local customer searches on Google, Instagram, or Facebook.
+              </p>
+
+              <div class="service-deliverables-title">// Key Deliverables</div>
+              <ul class="service-deliverables-list">
+                <li>
+                  <i data-lucide="check-circle-2" style="width: 16px;"></i>
+                  <span><strong>Google Business Profile (GBP) Domination:</strong> Local 3-Pack rank acceleration.</span>
+                </li>
+                <li>
+                  <i data-lucide="check-circle-2" style="width: 16px;"></i>
+                  <span><strong>Geo-Fenced Meta & Google Ads:</strong> High-intent radius targeting within 3-10km.</span>
+                </li>
+                <li>
+                  <i data-lucide="check-circle-2" style="width: 16px;"></i>
+                  <span><strong>WhatsApp Lead Funnels & Automation:</strong> Instant inquiry-to-booking flows.</span>
+                </li>
+                <li>
+                  <i data-lucide="check-circle-2" style="width: 16px;"></i>
+                  <span><strong>Local Citation & Review Velocity:</strong> 5-star reputation generation campaigns.</span>
+                </li>
+              </ul>
+
+              <div class="service-card-footer">
+                <div class="service-metric-highlight">
+                  Benchmark: <span>Top 3 Google Rank in 60 Days</span>
+                </div>
+                <a href="#contact" class="service-action-link">
+                  <span>Deploy Service</span>
+                  <i data-lucide="arrow-right" style="width: 14px;"></i>
+                </a>
+              </div>
+            </div>
+
+            <!-- Service 2: Offline Marketing -->
+            <div class="service-card-3d reveal-on-scroll">
+              <div class="card-specular-shine"></div>
+              
+              <div class="service-card-header">
+                <div class="service-icon-box">
+                  <i data-lucide="map-pin"></i>
+                </div>
+                <div class="service-kpi-pill">3.5x Store Footfall</div>
+              </div>
+
+              <h3 class="service-title">Offline & Ground Marketing</h3>
+              
+              <p class="service-lead-summary">
+                Physical neighborhood presence that creates deep local trust. We bring high-converting, tangible marketing assets directly to your ideal customers' doorsteps and daily routes.
+              </p>
+
+              <div class="service-deliverables-title">// Key Deliverables</div>
+              <ul class="service-deliverables-list">
+                <li>
+                  <i data-lucide="check-circle-2" style="width: 16px;"></i>
+                  <span><strong>Targeted BTL Ground Activations:</strong> High-engagement pop-ups & brand booths.</span>
+                </li>
+                <li>
+                  <i data-lucide="check-circle-2" style="width: 16px;"></i>
+                  <span><strong>Precision Direct-Mail & Flyer Drops:</strong> GPS-tracked, high-conversion print collateral.</span>
+                </li>
+                <li>
+                  <i data-lucide="check-circle-2" style="width: 16px;"></i>
+                  <span><strong>Strategic Merchant Cross-Promotions:</strong> Customer-sharing with non-competing businesses.</span>
+                </li>
+                <li>
+                  <i data-lucide="check-circle-2" style="width: 16px;"></i>
+                  <span><strong>High-Impact Outdoor & Transit Branding:</strong> Prime visual positioning on key arterial roads.</span>
+                </li>
+              </ul>
+
+              <div class="service-card-footer">
+                <div class="service-metric-highlight">
+                  Benchmark: <span>100% Tangible Neighborhood Reach</span>
+                </div>
+                <a href="#contact" class="service-action-link">
+                  <span>Deploy Service</span>
+                  <i data-lucide="arrow-right" style="width: 14px;"></i>
+                </a>
+              </div>
+            </div>
+
+            <!-- Service 3: Reel & Video Editing -->
+            <div class="service-card-3d reveal-on-scroll">
+              <div class="card-specular-shine"></div>
+              
+              <div class="service-card-header">
+                <div class="service-icon-box">
+                  <i data-lucide="video"></i>
+                </div>
+                <div class="service-kpi-pill">500K+ Viral Views</div>
+              </div>
+
+              <h3 class="service-title">Reel & Cinematic Video Production</h3>
+              
+              <p class="service-lead-summary">
+                High-retention, cinematic short-form video that stops the local scroll. We combine psychological hook scripting with studio-grade cinema capture to turn founders into local celebrities.
+              </p>
+
+              <div class="service-deliverables-title">// Key Deliverables</div>
+              <ul class="service-deliverables-list">
+                <li>
+                  <i data-lucide="check-circle-2" style="width: 16px;"></i>
+                  <span><strong>Hook-Engineered Scriptwriting:</strong> Grabbing local viewer attention in the first 2.5 seconds.</span>
+                </li>
+                <li>
+                  <i data-lucide="check-circle-2" style="width: 16px;"></i>
+                  <span><strong>On-Site 4K Cinema Production:</strong> Professional lighting, audio, and visual storytelling.</span>
+                </li>
+                <li>
+                  <i data-lucide="check-circle-2" style="width: 16px;"></i>
+                  <span><strong>High-Retention Editing & Sound FX:</strong> Dynamic pacing, motion typography, and sound design.</span>
+                </li>
+                <li>
+                  <i data-lucide="check-circle-2" style="width: 16px;"></i>
+                  <span><strong>Local Trend Capitalization:</strong> Fast turnaround on trending audio formats and viral hooks.</span>
+                </li>
+              </ul>
+
+              <div class="service-card-footer">
+                <div class="service-metric-highlight">
+                  Benchmark: <span>400% Surge in Social DM Leads</span>
+                </div>
+                <a href="#contact" class="service-action-link">
+                  <span>Deploy Service</span>
+                  <i data-lucide="arrow-right" style="width: 14px;"></i>
+                </a>
+              </div>
+            </div>
+
+            <!-- Service 4: Marketing Strategy & Consulting -->
+            <div class="service-card-3d reveal-on-scroll">
+              <div class="card-specular-shine"></div>
+              
+              <div class="service-card-header">
+                <div class="service-icon-box">
+                  <i data-lucide="trending-up"></i>
+                </div>
+                <div class="service-kpi-pill">3.2x Revenue Velocity</div>
+              </div>
+
+              <h3 class="service-title">Marketing Strategy & Consulting</h3>
+              
+              <p class="service-lead-summary">
+                Bespoke high-level advisory for founders who want to stop guessing and build a predictable 12-month customer generation pipeline backed by bulletproof unit economics.
+              </p>
+
+              <div class="service-deliverables-title">// Key Deliverables</div>
+              <ul class="service-deliverables-list">
+                <li>
+                  <i data-lucide="check-circle-2" style="width: 16px;"></i>
+                  <span><strong>Full Local Market & Competitor Audit:</strong> Uncovering unexploited local demand vectors.</span>
+                </li>
+                <li>
+                  <i data-lucide="check-circle-2" style="width: 16px;"></i>
+                  <span><strong>Offer Engineering & Pricing Optimization:</strong> Crafting high-ticket, irresistible local packages.</span>
+                </li>
+                <li>
+                  <i data-lucide="check-circle-2" style="width: 16px;"></i>
+                  <span><strong>90-Day Hyper-Growth Roadmap:</strong> Step-by-step tactical sprint with clear KPI milestones.</span>
+                </li>
+                <li>
+                  <i data-lucide="check-circle-2" style="width: 16px;"></i>
+                  <span><strong>Staff Sales & Script Training:</strong> Ensuring front-desk staff convert incoming leads into cash.</span>
+                </li>
+              </ul>
+
+              <div class="service-card-footer">
+                <div class="service-metric-highlight">
+                  Benchmark: <span>Predictable Quarterly Scaling</span>
+                </div>
+                <a href="#contact" class="service-action-link">
+                  <span>Deploy Service</span>
+                  <i data-lucide="arrow-right" style="width: 14px;"></i>
+                </a>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ==========================================================================
+           WHY US / APPROACH (360° HYBRID PHILOSOPHY)
+           ========================================================================== -->
+      <section id="approach" class="section-wrapper">
+        <div class="content-max-width">
+          
+          <div class="section-tagline-pill reveal-on-scroll">
+            <i data-lucide="refresh-cw" style="width: 14px;"></i>
+            <span>The 360° Hybrid Methodology</span>
+          </div>
+
+          <h2 class="section-heading-kinetic reveal-on-scroll">
+            Online Attracts Attention. <br />
+            <span class="text-gradient-emerald">Offline Solidifies Trust.</span>
+          </h2>
+
+          <div class="philosophy-banner-card reveal-on-scroll">
+            <h3 class="philosophy-banner-title">The Arvinex Marketing Philosophy</h3>
+            <p class="philosophy-banner-desc">
+              When a prospective customer sees your business on an Instagram Reel, encounters your 5-star profile at the top of Google Maps, receives a high-quality physical invitation at their residence, and passes an eye-catching street-level activation on their evening commute — <strong>you cease to be an option. You become the inevitable market authority.</strong>
+            </p>
+          </div>
+
+          <!-- 4-Phase Operational Sprint -->
+          <div class="process-timeline-grid">
+            
+            <div class="process-step-card reveal-on-scroll">
+              <div class="process-number-badge">01</div>
+              <h4 class="process-phase-name">Local Market Reconnaissance</h4>
+              <p class="process-phase-desc">
+                We conduct an exhaustive audit of your digital presence, analyze competitors within your local radius, identify footfall bottlenecks, and map your highest-margin customer personas.
+              </p>
+              <span class="process-deliverable-tag">Timeline: Days 1–7</span>
+            </div>
+
+            <div class="process-step-card reveal-on-scroll">
+              <div class="process-number-badge">02</div>
+              <h4 class="process-phase-name">Dual-Funnel Architecture</h4>
+              <p class="process-phase-desc">
+                We build the conversion infrastructure: optimizing Google Business Profile, scripting viral reels, designing print activation assets, and setting up automated WhatsApp booking triggers.
+              </p>
+              <span class="process-deliverable-tag">Timeline: Days 8–14</span>
+            </div>
+
+            <div class="process-step-card reveal-on-scroll">
+              <div class="process-number-badge">03</div>
+              <h4 class="process-phase-name">Synchronized Omni-Launch</h4>
+              <p class="process-phase-desc">
+                We pull the trigger simultaneously: launching hyper-targeted geo-fenced ads, deploying high-retention video content, initiating physical flyer drops, and setting up ground activations.
+              </p>
+              <span class="process-deliverable-tag">Timeline: Days 15–45</span>
+            </div>
+
+            <div class="process-step-card reveal-on-scroll">
+              <div class="process-number-badge">04</div>
+              <h4 class="process-phase-name">Retention & Territory Scale</h4>
+              <p class="process-phase-desc">
+                We turn first-time visitors into repeat brand advocates through automated review acquisition, SMS loyalty loops, referral incentives, and expansion into neighboring pincodes.
+              </p>
+              <span class="process-deliverable-tag">Timeline: Days 46–90+</span>
+            </div>
+
+          </div>
+
+          <!-- Comparison Table: Traditional vs Arvinex Hybrid Standard -->
+          <div class="comparison-table-wrapper reveal-on-scroll">
+            <div class="comparison-heading">
+              <i data-lucide="scale" style="color: var(--color-brand-cyan);"></i>
+              <span>Execution Matrix: Traditional Agencies vs. The Arvinex Standard</span>
+            </div>
+
+            <table class="comparison-table">
+              <thead>
+                <tr>
+                  <th>Performance Dimension</th>
+                  <th>Generic Digital Agencies</th>
+                  <th>Old-School Offline Printers</th>
+                  <th class="brand-col">Arvinex Venture Standard</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Channel Strategy</strong></td>
+                  <td>Only online ads (disconnected from store)</td>
+                  <td>Only flyers/posters (zero digital sync)</td>
+                  <td class="brand-col">Unified 360° Hybrid (Digital + Ground)</td>
+                </tr>
+                <tr>
+                  <td><strong>Local Market Understanding</strong></td>
+                  <td>Remote guesswork & generic templates</td>
+                  <td>Basic printing without strategic targeting</td>
+                  <td class="brand-col">Ground-truth reconnaissance & radius mapping</td>
+                </tr>
+                <tr>
+                  <td><strong>Video Content Production</strong></td>
+                  <td>Stock footage & automated AI clips</td>
+                  <td>None provided</td>
+                  <td class="brand-col">On-site 4K cinematic shoots & viral hook editing</td>
+                </tr>
+                <tr>
+                  <td><strong>Performance Metrics</strong></td>
+                  <td>Vanity clicks, impressions, and likes</td>
+                  <td>Number of pieces printed</td>
+                  <td class="brand-col">Verified in-store footfall & cash register ROI</td>
+                </tr>
+                <tr>
+                  <td><strong>Leadership Accountability</strong></td>
+                  <td>Junior account managers with low context</td>
+                  <td>Print operators with no marketing acumen</td>
+                  <td class="brand-col">Direct strategic access to Co-Founders</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ==========================================================================
+           CASE STUDIES & REAL-WORLD IMPACT
+           ========================================================================== -->
+      <section id="impact" class="section-wrapper">
+        <div class="content-max-width">
+          
+          <div class="section-tagline-pill reveal-on-scroll">
+            <i data-lucide="award" style="width: 14px;"></i>
+            <span>Verified Local Transformations</span>
+          </div>
+
+          <h2 class="section-heading-kinetic reveal-on-scroll">
+            Real Businesses. Real Numbers. <br />
+            <span class="text-gradient-cyan">Documented Market Monopolies.</span>
+          </h2>
+
+          <p class="section-subhead-lead reveal-on-scroll">
+            Explore how our hybrid online and offline marketing systems generated substantial revenue growth and verified customer footfall across diverse local commercial sectors.
+          </p>
+
+          <div class="case-studies-grid">
+
+            <!-- Case 1: Hospitality & Dining -->
+            <div class="case-study-card reveal-on-scroll">
+              <div>
+                <div class="case-meta-top">
+                  <span class="case-sector-badge">Hospitality & Fine Dining</span>
+                  <span style="font-family: var(--font-mono); font-size: 11px; color: var(--color-brand-cyan);">90-Day Campaign</span>
+                </div>
+                <h3 class="case-client-name">The Grand Pavilion Restaurant</h3>
+                <p class="case-strategy-desc">
+                  Combined viral cinematic food reels on Instagram with targeted VIP invitation drops to residential societies within a 5km radius, backed by Google Maps Local 3-Pack optimization.
+                </p>
+              </div>
+
+              <div>
+                <div class="case-metrics-cluster">
+                  <div class="case-stat-box">
+                    <div class="case-stat-val">+340%</div>
+                    <div class="case-stat-lbl">Weekend Footfall</div>
+                  </div>
+                  <div class="case-stat-box">
+                    <div class="case-stat-val">4.2M</div>
+                    <div class="case-stat-lbl">Viral Reel Views</div>
+                  </div>
+                  <div class="case-stat-box">
+                    <div class="case-stat-val">3.8x</div>
+                    <div class="case-stat-lbl">Table Turnover</div>
+                  </div>
+                </div>
+                <div style="font-family: var(--font-mono); font-size: 11px; color: var(--color-text-muted);">
+                  Result: Full weekend table reservations booked out 3 weeks in advance.
+                </div>
+              </div>
+            </div>
+
+            <!-- Case 2: Healthcare & Dental -->
+            <div class="case-study-card reveal-on-scroll">
+              <div>
+                <div class="case-meta-top">
+                  <span class="case-sector-badge">Premium Healthcare Clinic</span>
+                  <span style="font-family: var(--font-mono); font-size: 11px; color: var(--color-brand-cyan);">60-Day Sprint</span>
+                </div>
+                <h3 class="case-client-name">Apex Orthodontics & Dental Care</h3>
+                <p class="case-strategy-desc">
+                  Engineered a high-ticket Invisalign and smile makeover acquisition funnel using localized Google Search PPC ads, educational doctor reels, and strategic corporate health park tie-ups.
+                </p>
+              </div>
+
+              <div>
+                <div class="case-metrics-cluster">
+                  <div class="case-stat-box">
+                    <div class="case-stat-val">180+</div>
+                    <div class="case-stat-lbl">High-Ticket Consults</div>
+                  </div>
+                  <div class="case-stat-box">
+                    <div class="case-stat-val">#1 Rank</div>
+                    <div class="case-stat-lbl">Google Local Pack</div>
+                  </div>
+                  <div class="case-stat-box">
+                    <div class="case-stat-val">₹24L+</div>
+                    <div class="case-stat-lbl">New Treatment Rev</div>
+                  </div>
+                </div>
+                <div style="font-family: var(--font-mono); font-size: 11px; color: var(--color-text-muted);">
+                  Result: Highest monthly patient acquisition in clinic's 6-year history.
+                </div>
+              </div>
+            </div>
+
+            <!-- Case 3: Fitness & Wellness -->
+            <div class="case-study-card reveal-on-scroll">
+              <div>
+                <div class="case-meta-top">
+                  <span class="case-sector-badge">Luxury Fitness & Gym</span>
+                  <span style="font-family: var(--font-mono); font-size: 11px; color: var(--color-brand-cyan);">Pre-Launch Campaign</span>
+                </div>
+                <h3 class="case-client-name">IronForge Elite Fitness</h3>
+                <p class="case-strategy-desc">
+                  Orchestrated a massive pre-launch hype campaign combining high-energy trainer workout reels, geo-targeted countdown ads, and on-ground street promotional teams in corporate hubs.
+                </p>
+              </div>
+
+              <div>
+                <div class="case-metrics-cluster">
+                  <div class="case-stat-box">
+                    <div class="case-stat-val">250</div>
+                    <div class="case-stat-lbl">Memberships Sold</div>
+                  </div>
+                  <div class="case-stat-box">
+                    <div class="case-stat-val">100%</div>
+                    <div class="case-stat-lbl">Capacity at Opening</div>
+                  </div>
+                  <div class="case-stat-box">
+                    <div class="case-stat-val">₹38L</div>
+                    <div class="case-stat-lbl">Pre-Opening Cash</div>
+                  </div>
+                </div>
+                <div style="font-family: var(--font-mono); font-size: 11px; color: var(--color-text-muted);">
+                  Result: Facility reached break-even profitability on Day 1 of operations.
+                </div>
+              </div>
+            </div>
+
+            <!-- Case 4: Retail & Fashion -->
+            <div class="case-study-card reveal-on-scroll">
+              <div>
+                <div class="case-meta-top">
+                  <span class="case-sector-badge">High-Street Fashion Retail</span>
+                  <span style="font-family: var(--font-mono); font-size: 11px; color: var(--color-brand-cyan);">Festival Campaign</span>
+                </div>
+                <h3 class="case-client-name">Urban Vogue Boutique</h3>
+                <p class="case-strategy-desc">
+                  Deployed micro-influencer styling reels, exclusive WhatsApp VIP pass registration, and coordinated point-of-sale store decorations that turned casual foot traffic into immediate buyers.
+                </p>
+              </div>
+
+              <div>
+                <div class="case-metrics-cluster">
+                  <div class="case-stat-box">
+                    <div class="case-stat-val">5.2x</div>
+                    <div class="case-stat-lbl">Return On Ad Spend</div>
+                  </div>
+                  <div class="case-stat-box">
+                    <div class="case-stat-val">+210%</div>
+                    <div class="case-stat-lbl">Store Walk-Ins</div>
+                  </div>
+                  <div class="case-stat-box">
+                    <div class="case-stat-val">94%</div>
+                    <div class="case-stat-lbl">Stock Clearance</div>
+                  </div>
+                </div>
+                <div style="font-family: var(--font-mono); font-size: 11px; color: var(--color-text-muted);">
+                  Result: Complete collection sell-out 10 days ahead of festive deadline.
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ==========================================================================
+           LEADERSHIP & CO-FOUNDER SYNERGY
+           ========================================================================== -->
+      <section id="founders" class="section-wrapper" style="padding-top: 60px;">
+        <div class="content-max-width">
+          
+          <div class="leadership-synergy-banner reveal-on-scroll">
+            <div class="section-tagline-pill" style="margin-bottom: 24px;">
+              <i data-lucide="users" style="width: 14px;"></i>
+              <span>Executive Leadership Synergy</span>
+            </div>
+
+            <h2 class="section-heading-kinetic" style="font-size: clamp(28px, 4vw, 48px); margin-bottom: 20px;">
+              Two Founders. One Vision. <br />
+              <span class="text-gradient-cyan">Unstoppable Local Dominance.</span>
+            </h2>
+
+            <p style="color: var(--color-text-secondary); font-size: 16px; line-height: 1.7; max-width: 820px; margin-bottom: 40px;">
+              Arvinex Venture Private Limited was founded on the synergy between deep strategic ground marketing and cutting-edge digital experiences. We don't operate in silos; we execute as an integrated growth unit.
+            </p>
+
+            <div class="founders-grid">
+              
+              <!-- Aryan Katoch Card -->
+              <div class="founder-card active-primary">
+                <div class="founder-card-header">
+                  <div class="profile-photo-frame founder-photo-frame">
+                    <img src="assets/images/aryan-katoch-placeholder.svg" alt="Aryan Katoch" class="profile-photo-img" />
+                    <span class="photo-status-indicator" style="width: 11px; height: 11px;" title="Online"></span>
+                  </div>
+                  <div class="founder-identity-text">
+                    <div class="founder-badge-role">Director & Co-Founder</div>
+                    <h3 class="founder-name" style="margin-bottom: 0;">Aryan Katoch</h3>
+                  </div>
+                </div>
+                <p class="founder-bio">
+                  Leads overall agency direction, commercial strategy, high-yield offline marketing initiatives, BTL ground activations, and client expansion blueprints. Focused on real-world local business revenue and footfall velocity.
+                </p>
+                <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+                  <a href="#contact" class="founder-link-pill">
+                    <i data-lucide="phone" style="width: 13px;"></i>
+                    <span>Connect with Aryan</span>
+                  </a>
+                  <a href="https://wa.me/918894402974" target="_blank" class="founder-link-pill" style="color: var(--color-brand-emerald); border-color: rgba(0, 255, 157, 0.3);">
+                    <i data-lucide="message-circle" style="width: 13px;"></i>
+                    <span>WhatsApp Aryan</span>
+                  </a>
+                </div>
+              </div>
+
+              <!-- Sarthak Sharma Card -->
+              <div class="founder-card">
+                <div class="founder-card-header">
+                  <div class="profile-photo-frame founder-photo-frame blue-glow">
+                    <img src="assets/images/sarthak-sharma-placeholder.svg" alt="Sarthak Sharma" class="profile-photo-img" />
+                    <span class="photo-status-indicator" style="width: 11px; height: 11px; background-color: #60A5FA; box-shadow: 0 0 10px #60A5FA;" title="Online"></span>
+                  </div>
+                  <div class="founder-identity-text">
+                    <div class="founder-badge-role" style="color: #60A5FA;">Chief Marketing Officer & Co-Founder</div>
+                    <h3 class="founder-name" style="margin-bottom: 0;">Sarthak Sharma</h3>
+                  </div>
+                </div>
+                <p class="founder-bio">
+                  Leads digital marketing architectures, cutting-edge web design, conversion optimization, and brand positioning ecosystems. Spearheading digital innovation and interactive client experiences.
+                </p>
+                <div>
+                  <a href="https://arvinexsarthak.online" target="_blank" rel="noopener noreferrer" class="founder-link-pill" style="color: #60A5FA; border-color: rgba(96, 165, 250, 0.4); background: rgba(96, 165, 250, 0.08);">
+                    <span>Visit Sarthak's Portfolio</span>
+                    <i data-lucide="external-link" style="width: 13px;"></i>
+                  </a>
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ==========================================================================
+           CONTACT & INTAKE SECTION
+           ========================================================================== -->
+      <section id="contact" class="section-wrapper">
+        <div class="content-max-width">
+          
+          <div class="section-tagline-pill reveal-on-scroll">
+            <i data-lucide="message-square" style="width: 14px;"></i>
+            <span>Initiate Your Growth Sprint</span>
+          </div>
+
+          <h2 class="section-heading-kinetic reveal-on-scroll">
+            Let's Build Your Local <br />
+            <span class="text-gradient-cyan">Market Monopoly</span>
+          </h2>
+
+          <p class="section-subhead-lead reveal-on-scroll">
+            Ready to out-market, out-rank, and out-sell every local competitor in your territory? Reach out directly to Aryan Katoch or submit your business details for a complimentary 360° Growth Audit.
+          </p>
+
+          <div class="contact-container-grid">
+            
+            <!-- Left: Direct Contact Methods -->
+            <div class="contact-info-column reveal-on-scroll">
+              
+              <!-- Phone / WhatsApp Card -->
+              <div class="contact-method-card">
+                <div class="contact-method-header">
+                  <div class="contact-icon-bubble emerald">
+                    <i data-lucide="phone"></i>
+                  </div>
+                  <div>
+                    <h4 class="contact-card-title">Phone & WhatsApp Direct</h4>
+                    <span style="font-family: var(--font-mono); font-size: 11px; color: var(--color-brand-emerald);">Direct Executive Line</span>
+                  </div>
+                </div>
+
+                <div class="contact-primary-val">+91 8894402974</div>
+
+                <div class="contact-card-actions">
+                  <a href="https://wa.me/918894402974?text=Hi%20Aryan,%20I'd%20like%20to%20discuss%20growing%20my%20business%20with%20Arvinex%20Venture." target="_blank" class="contact-action-btn whatsapp">
+                    <i data-lucide="message-circle" style="width: 15px;"></i>
+                    <span>Chat on WhatsApp</span>
+                  </a>
+                  <a href="tel:+918894402974" class="contact-action-btn call">
+                    <i data-lucide="phone-call" style="width: 15px;"></i>
+                    <span>Direct Call</span>
+                  </a>
+                </div>
+              </div>
+
+              <!-- Email Card -->
+              <div class="contact-method-card">
+                <div class="contact-method-header">
+                  <div class="contact-icon-bubble">
+                    <i data-lucide="mail"></i>
+                  </div>
+                  <div>
+                    <h4 class="contact-card-title">Email Aryan</h4>
+                    <span style="font-family: var(--font-mono); font-size: 11px; color: var(--color-brand-cyan);">Official Business Inquiries</span>
+                  </div>
+                </div>
+
+                <div class="contact-primary-val">aryankatoch236@gmail.com</div>
+
+                <div class="contact-card-actions">
+                  <a href="mailto:aryankatoch236@gmail.com" class="contact-action-btn email">
+                    <i data-lucide="send" style="width: 15px;"></i>
+                    <span>Send Email</span>
+                  </a>
+                  <button id="copy-email-btn" class="contact-action-btn copy" type="button">
+                    <i data-lucide="copy" style="width: 15px;"></i>
+                    <span>Copy Address</span>
+                  </button>
+                </div>
+              </div>
+
+              <!-- Agency HQ Card -->
+              <div class="contact-method-card">
+                <div class="contact-method-header">
+                  <div class="contact-icon-bubble">
+                    <i data-lucide="shield-check"></i>
+                  </div>
+                  <div>
+                    <h4 class="contact-card-title">Arvinex Venture Private Limited</h4>
+                    <span style="font-family: var(--font-mono); font-size: 11px; color: var(--color-brand-cyan);">Registered Marketing Enterprise</span>
+                  </div>
+                </div>
+
+                <p style="font-size: 14px; color: var(--color-text-secondary); line-height: 1.6; margin-bottom: 14px;">
+                  Providing comprehensive full-spectrum marketing, digital growth architectures, reel video production, and ground-level offline marketing to local businesses across India.
+                </p>
+
+                <div style="display: flex; align-items: center; gap: 8px; font-family: var(--font-mono); font-size: 11px; color: var(--color-brand-emerald);">
+                  <span style="width: 7px; height: 7px; border-radius: 50%; background: var(--color-brand-emerald); display: inline-block;"></span>
+                  <span>Active Client Onboarding Cycle Open</span>
+                </div>
+              </div>
+
+            </div>
+
+            <!-- Right: Interactive Consultation Form -->
+            <div class="consultation-form-card reveal-on-scroll">
+              <h3 class="form-title">Schedule Strategic Audit</h3>
+              <p class="form-subtitle">Fill out your business details below. Aryan Katoch will personally review your local footprint and prepare a 90-day growth blueprint.</p>
+
+              <form id="consultation-form" action="https://formsubmit.co/aryankatoch236@gmail.com" method="POST">
+                <!-- FormSubmit / Mail Configuration Settings -->
+                <input type="hidden" name="_subject" value="🚀 New Local Growth Inquiry - Aryan Katoch Portfolio" />
+                <input type="hidden" name="_template" value="table" />
+                <input type="hidden" name="_captcha" value="false" />
+                <input type="hidden" name="_autoresponse" value="Thank you for reaching out to Aryan Katoch, Director & Co-Founder at Arvinex Venture Private Limited. We have received your inquiry and will connect with you within 24 hours to schedule your strategic audit." />
+
+                <div class="form-grid-fields two-col">
+                  <div class="form-field-group">
+                    <label class="form-field-label" for="client-name">Your Full Name *</label>
+                    <input type="text" id="client-name" name="Full_Name" class="form-input-control" placeholder="e.g. Rahul Sharma" required />
+                  </div>
+
+                  <div class="form-field-group">
+                    <label class="form-field-label" for="client-business">Business Name & City *</label>
+                    <input type="text" id="client-business" name="Business_Name_and_City" class="form-input-control" placeholder="e.g. Saffron Bistro, Chandigarh" required />
+                  </div>
+                </div>
+
+                <div class="form-grid-fields two-col">
+                  <div class="form-field-group">
+                    <label class="form-field-label" for="client-phone">Phone / WhatsApp Number *</label>
+                    <input type="tel" id="client-phone" name="Phone_Number" class="form-input-control" placeholder="e.g. +91 98765 43210" required />
+                  </div>
+
+                  <div class="form-field-group">
+                    <label class="form-field-label" for="client-email">Email Address *</label>
+                    <input type="email" id="client-email" name="Email_Address" class="form-input-control" placeholder="e.g. rahul@business.com" required />
+                  </div>
+                </div>
+
+                <div class="form-grid-fields two-col">
+                  <div class="form-field-group">
+                    <label class="form-field-label" for="client-service">Primary Growth Priority *</label>
+                    <select id="client-service" name="Growth_Service_Priority" class="form-input-control" required>
+                      <option value="360° Hybrid Marketing (Online + Offline)">360° Hybrid Marketing (Recommended)</option>
+                      <option value="Digital & Online Marketing (Google Pack + PPC)">Digital & Online Marketing</option>
+                      <option value="Offline & Ground Marketing (BTL + Print)">Offline & Ground Marketing</option>
+                      <option value="Reel & Cinematic Video Production">Reel & Cinematic Video Production</option>
+                      <option value="Marketing Strategy & Growth Consulting">Marketing Strategy & Growth Consulting</option>
+                    </select>
+                  </div>
+
+                  <div class="form-field-group">
+                    <label class="form-field-label" for="client-budget">Monthly Marketing Budget</label>
+                    <select id="client-budget" name="Monthly_Budget" class="form-input-control">
+                      <option value="₹25,000 - ₹50,000 / month">₹25,000 – ₹50,000 / month</option>
+                      <option value="₹50,000 - ₹1,00,000 / month">₹50,000 – ₹1,00,000 / month</option>
+                      <option value="₹1,00,000 - ₹2,50,000 / month">₹1,00,000 – ₹2,50,000 / month</option>
+                      <option value="₹2,50,000+ / month (Enterprise Domination)">₹2,50,000+ / month (Enterprise)</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="form-grid-fields">
+                  <div class="form-field-group">
+                    <label class="form-field-label" for="client-notes">Brief Overview of Current Business Challenges</label>
+                    <textarea id="client-notes" name="Business_Challenges" class="form-input-control" placeholder="Tell us about your current footfall, competitors, or specific targets you want to hit..."></textarea>
+                  </div>
+                </div>
+
+                <button type="submit" id="form-submit-btn" class="form-submit-btn">
+                  <span>Transmit Growth Inquiry</span>
+                </button>
+
+                <div style="font-family: var(--font-mono); font-size: 11px; color: var(--color-text-muted); text-align: center; margin-top: 14px;">
+                  🔒 Secured & dispatched to <span style="color: var(--color-brand-cyan);">aryankatoch236@gmail.com</span>
+                </div>
+
+                <div id="form-success-banner" class="form-success-banner"></div>
+              </form>
+
+            </div>
+
+          </div>
+
+        </div>
+      </section>
+    </main>
+
+    <!-- ==========================================================================
+         FOOTER
+         ========================================================================== -->
+    <footer class="site-footer">
+      <div class="content-max-width">
+        
+        <div class="footer-top-grid">
+          
+          <div class="footer-bio-col">
+            <div class="brand-monogram-container" style="margin-bottom: 14px;">
+              <div class="monogram-badge">AK</div>
+              <div class="brand-titles">
+                <span class="brand-name">ARYAN KATOCH</span>
+                <span class="brand-company">Arvinex Venture Private Limited</span>
+              </div>
+            </div>
+            <p>
+              Director & Co-Founder at Arvinex Venture Private Limited. Combining dominant digital visibility with high-impact ground-level offline marketing to build impenetrable local monopolies.
+            </p>
+          </div>
+
+          <div>
+            <div class="footer-nav-title">Quick Navigation</div>
+            <ul class="footer-nav-list">
+              <li><a href="#about">About Aryan</a></li>
+              <li><a href="#services">Dominance Services</a></li>
+              <li><a href="#approach">Hybrid Methodology</a></li>
+              <li><a href="#impact">Client Case Studies</a></li>
+              <li><a href="#founders">Executive Leadership</a></li>
+              <li><a href="#contact">Direct Consultation</a></li>
+            </ul>
+          </div>
+
+          <div>
+            <div class="footer-nav-title">Direct Contacts</div>
+            <ul class="footer-nav-list">
+              <li><span style="color: var(--color-text-muted); font-size: 12px; font-family: var(--font-mono);">PHONE / WHATSAPP</span><br /><a href="tel:+918894402974" style="color: #FFFFFF; font-weight: 600;">+91 8894402974</a></li>
+              <li style="margin-top: 10px;"><span style="color: var(--color-text-muted); font-size: 12px; font-family: var(--font-mono);">OFFICIAL EMAIL</span><br /><a href="mailto:aryankatoch236@gmail.com" style="color: #FFFFFF; font-weight: 600;">aryankatoch236@gmail.com</a></li>
+              <li style="margin-top: 10px;"><span style="color: var(--color-text-muted); font-size: 12px; font-family: var(--font-mono);">CO-FOUNDER PORTFOLIO</span><br /><a href="https://arvinexsarthak.online" target="_blank" rel="noopener noreferrer" style="color: var(--color-brand-cyan);">arvinexsarthak.online ↗</a></li>
+            </ul>
+          </div>
+
+        </div>
+
+        <div class="footer-bottom-bar">
+          <div>
+            © 2026 Aryan Katoch · Arvinex Venture Private Limited. All Rights Reserved.
+          </div>
+
+          <div style="display: flex; align-items: center; gap: 16px;">
+            <div style="display: flex; align-items: center; gap: 6px;">
+              <span style="width: 7px; height: 7px; border-radius: 50%; background: var(--color-brand-emerald); display: inline-block;"></span>
+              <span id="live-ist-clock">10:00:00 AM IST</span>
+            </div>
+            <button id="back-to-top-btn" class="back-to-top-btn" aria-label="Back to top" title="Back to top">
+              <i data-lucide="chevron-up"></i>
+            </button>
+          </div>
+        </div>
+
+      </div>
+    </footer>
+
+  </div>
+
+  <!-- Application Logic -->
+  <script src="app.js"></script>
+</body>
+</html>
