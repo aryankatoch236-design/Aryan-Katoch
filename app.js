@@ -611,19 +611,6 @@
   }
 
   /* ==========================================================================
-     EMAIL DISPATCH ENDPOINT CONFIGURATION
-     ==========================================================================
-     Default: FormSubmit AJAX pipeline routed to aryankatoch236@gmail.com
-     (Note: On the first test submission, FormSubmit will send a one-time
-     verification link to aryankatoch236@gmail.com to activate forwarding).
-
-     Formspree Alternative:
-     If you have a Formspree ID, set it here:
-     const EMAIL_DISPATCH_ENDPOINT = 'https://formspree.io/f/YOUR_FORM_ID';
-     ========================================================================== */
-  const EMAIL_DISPATCH_ENDPOINT = 'https://formsubmit.co/ajax/aryankatoch236@gmail.com';
-
-  /* ==========================================================================
      COPY EMAIL & INTERACTIVE CONTACT ACTIONS
      ========================================================================== */
   function initContactActions() {
@@ -641,93 +628,54 @@
       });
     }
 
-    // Live Consultation form submission
+    // Consultation form submission
     const form = document.getElementById('consultation-form');
     const successBanner = document.getElementById('form-success-banner');
     const submitBtn = document.getElementById('form-submit-btn');
 
     if (form) {
-      form.addEventListener('submit', async (e) => {
+      form.addEventListener('submit', (e) => {
         e.preventDefault();
         initAudio();
 
         const name = document.getElementById('client-name')?.value || 'Partner';
         const business = document.getElementById('client-business')?.value || 'Your Business';
         const phone = document.getElementById('client-phone')?.value || '';
-        const email = document.getElementById('client-email')?.value || '';
         const service = document.getElementById('client-service')?.value || 'Full-Funnel Growth';
 
-        // Visual loading state
+        // Provide immediate visual loading feedback
         if (submitBtn) {
           const originalText = submitBtn.textContent;
-          submitBtn.textContent = 'TRANSMITTING TO ARYAN KATOCH...';
-          submitBtn.style.opacity = '0.75';
+          submitBtn.textContent = 'TRANSMITTING INQUIRY...';
+          submitBtn.style.opacity = '0.7';
           submitBtn.disabled = true;
-        }
 
-        try {
-          const formData = new FormData(form);
-
-          // Real HTTP POST transmission to the mail gateway
-          const response = await fetch(EMAIL_DISPATCH_ENDPOINT, {
-            method: 'POST',
-            headers: {
-              'Accept': 'application/json'
-            },
-            body: formData
-          });
-
-          const result = await response.json().catch(() => ({ success: true }));
-
-          playUiSound('success');
-          if (submitBtn) {
-            submitBtn.textContent = 'INQUIRY SECURED & DISPATCHED ✓';
-            submitBtn.style.opacity = '1';
-            submitBtn.disabled = false;
-          }
-
-          if (successBanner) {
-            successBanner.innerHTML = `
-              <div style="font-weight: 700; font-size: 14px; margin-bottom: 6px; color: var(--color-brand-cyan);">
-                ✓ PRIORITY INTAKE CONFIRMED FOR ${name.toUpperCase()}
-              </div>
-              <div style="line-height: 1.6; color: #E2E8F0;">
-                Your inquiry has been successfully transmitted directly to <strong>Aryan Katoch's executive inbox</strong> (<span style="color: var(--color-brand-emerald);">aryankatoch236@gmail.com</span>). Our team will review <strong>${business}</strong> and connect with you within 24 hours.
-              </div>
-            `;
-            successBanner.classList.add('active');
-          }
-
-          showToast(`Inquiry Dispatched to aryankatoch236@gmail.com!`);
-          form.reset();
-
-          // Offer instant WhatsApp follow-up fast-track
           setTimeout(() => {
-            const waPrompt = `Hi Aryan, I just sent a consultation inquiry from your portfolio for ${business} regarding ${service}. Looking forward to discussing our local market expansion!`;
-            const waUrl = `https://wa.me/918894402974?text=${encodeURIComponent(waPrompt)}`;
-            if (confirm(`Your inquiry was dispatched to aryankatoch236@gmail.com!\n\nWould you also like to fast-track your consultation directly on WhatsApp now?`)) {
-              window.open(waUrl, '_blank');
-            }
-          }, 800);
-
-        } catch (err) {
-          console.error('Email submission error:', err);
-          if (submitBtn) {
-            submitBtn.textContent = 'TRANSMIT VIA WHATSAPP';
+            submitBtn.textContent = 'INQUIRY SECURED';
             submitBtn.style.opacity = '1';
             submitBtn.disabled = false;
-          }
+            playUiSound('success');
 
-          if (successBanner) {
-            successBanner.innerHTML = `
-              <div style="font-weight: 700; margin-bottom: 4px; color: #F59E0B;">CONNECT DIRECTLY VIA WHATSAPP OR EMAIL</div>
-              <div>Direct email transmission encountered a network hiccup. You can connect with Aryan directly on WhatsApp at <strong>+91 8894402974</strong> or email <strong>aryankatoch236@gmail.com</strong>.</div>
-            `;
-            successBanner.classList.add('active');
-          }
+            if (successBanner) {
+              successBanner.innerHTML = `
+                <div style="font-weight: 700; margin-bottom: 4px;">PRIORITY INTAKE CONFIRMED FOR ${name.toUpperCase()}</div>
+                <div>Thank you! Aryan Katoch & the Arvinex Venture team will review <strong>${business}</strong> and reach out via ${phone || 'contact'} within 24 hours.</div>
+              `;
+              successBanner.classList.add('active');
+            }
 
-          const fallbackWa = `https://wa.me/918894402974?text=${encodeURIComponent(`Hi Aryan, I want to schedule a growth audit for ${business} regarding ${service}. My contact: ${phone}`)}`;
-          window.open(fallbackWa, '_blank');
+            showToast(`Growth Inquiry Transmitted for ${business}!`);
+            form.reset();
+
+            // WhatsApp instant follow-up offer
+            setTimeout(() => {
+              const waPrompt = `Hi Aryan, I just submitted an inquiry on your portfolio for ${business} regarding ${service}. Looking forward to discussing our local market expansion!`;
+              const waUrl = `https://wa.me/918894402974?text=${encodeURIComponent(waPrompt)}`;
+              if (confirm('Would you like to fast-track your consultation directly on WhatsApp now?')) {
+                window.open(waUrl, '_blank');
+              }
+            }, 600);
+          }, 1000);
         }
       });
     }
