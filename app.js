@@ -103,7 +103,7 @@
 // Gentle 3D tilt on cards (mouse devices only, skipped for reduced motion)
 (function () {
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches || !window.matchMedia('(hover: hover)').matches) return;
-  document.querySelectorAll('.row, .people article, .pillar').forEach(function (el) {
+  document.querySelectorAll('.row, .people article, .pillar, .ind, .work, .plan').forEach(function (el) {
     el.addEventListener('pointermove', function (e) {
       if (!el.classList.contains('settled') && el.classList.contains('reveal')) return;
       var r = el.getBoundingClientRect();
@@ -112,4 +112,36 @@
     });
     el.addEventListener('pointerleave', function () { el.style.transform = ''; });
   });
+})();
+
+
+// Scroll progress bar + active nav link
+(function () {
+  var bar = document.querySelector('.progress span');
+  var links = Array.prototype.slice.call(document.querySelectorAll('nav a[href^="#"]:not(.btn)'));
+  var secs = links.map(function (a) { return document.querySelector(a.getAttribute('href')); });
+  var ticking = false;
+  function update() {
+    ticking = false;
+    var max = document.documentElement.scrollHeight - window.innerHeight;
+    if (bar) bar.style.transform = 'scaleX(' + (max > 0 ? Math.min(1, window.scrollY / max) : 0) + ')';
+    var cur = -1, mid = window.innerHeight * 0.35;
+    secs.forEach(function (s, i) { if (s && s.getBoundingClientRect().top < mid) cur = i; });
+    links.forEach(function (a, i) { a.classList.toggle('active', i === cur); });
+  }
+  window.addEventListener('scroll', function () { if (!ticking) { ticking = true; requestAnimationFrame(update); } }, { passive: true });
+  update();
+})();
+
+// Soft gold glow that follows the cursor (mouse devices only)
+(function () {
+  var g = document.querySelector('.cursor-glow');
+  if (!g || window.matchMedia('(prefers-reduced-motion: reduce)').matches || !window.matchMedia('(hover: hover)').matches) return;
+  var x = 0, y = 0, raf = 0;
+  window.addEventListener('pointermove', function (e) {
+    x = e.clientX; y = e.clientY;
+    document.body.classList.add('has-glow');
+    if (!raf) raf = requestAnimationFrame(function () { g.style.transform = 'translate(' + x + 'px,' + y + 'px)'; raf = 0; });
+  }, { passive: true });
+  document.addEventListener('pointerleave', function () { document.body.classList.remove('has-glow'); });
 })();

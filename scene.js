@@ -1,4 +1,4 @@
-/* Hero 3D: a Himachal valley at dusk. A small town on the valley floor,
+/* Hero 3D: a Himachal valley at night. A small town on the valley floor,
    map pins rising over local shops with pulse rings, glowing "signal" arcs
    between them (online), drifting clouds and fireflies.
    Drag to orbit, mouse parallax, scroll flies the camera into the valley. */
@@ -24,8 +24,8 @@
     hero.classList.add('has-3d');
 
     var scene = new T.Scene();
-    var HORIZON = 0xE9A949;
-    scene.fog = new T.Fog(HORIZON, 90, 300);
+    var HORIZON = 0x0A1C1A;
+    scene.fog = new T.Fog(HORIZON, 80, 290);
     var camera = new T.PerspectiveCamera(45, 1, 0.5, 900);
 
     /* ---------- helpers ---------- */
@@ -43,11 +43,12 @@
     }
     var glow = glowTexture('rgba(255,236,170,1)', 'rgba(255,200,90,.35)');
     var soft = glowTexture('rgba(255,255,255,.9)', 'rgba(255,240,225,.35)');
+    var moonGlow = glowTexture('rgba(220,232,255,1)', 'rgba(140,170,220,.3)');
 
     /* ---------- sky dome ---------- */
     var skyG = new T.SphereGeometry(420, 32, 16);
     var sp = skyG.attributes.position, skyC = new Float32Array(sp.count * 3);
-    var top = new T.Color(0x0B2620), mid = new T.Color(0x2E6B57), low = new T.Color(0xF2B85A), cc = new T.Color();
+    var top = new T.Color(0x020607), mid = new T.Color(0x08201D), low = new T.Color(0x24423A), cc = new T.Color();
     for (var i = 0; i < sp.count; i++) {
       var y = sp.getY(i) / 420;               // -1..1
       if (y > 0.25) cc.copy(mid).lerp(top, Math.min(1, (y - 0.25) / 0.6));
@@ -58,24 +59,36 @@
     scene.add(new T.Mesh(skyG, new T.MeshBasicMaterial({ vertexColors: true, side: T.BackSide, fog: false, depthWrite: false })));
 
     /* ---------- light ---------- */
-    scene.add(new T.HemisphereLight(0xFFE2A8, 0x0F3A30, 0.8));
-    var key = new T.DirectionalLight(0xFFC979, 1.15);
-    key.position.set(60, 45, -120);
+    scene.add(new T.HemisphereLight(0x7FA3B8, 0x03100C, 0.6));
+    var key = new T.DirectionalLight(0xC9DBFF, 0.75);
+    key.position.set(-60, 70, -120);
     scene.add(key);
-    var fill = new T.DirectionalLight(0x9FD3C0, 0.35);
+    var fill = new T.DirectionalLight(0x4E7F74, 0.3);
     fill.position.set(-50, 30, 60);
     scene.add(fill);
 
     /* ---------- sun ---------- */
     var sun = new T.Group();
-    sun.add(new T.Mesh(new T.SphereGeometry(9, 24, 16), new T.MeshBasicMaterial({ color: 0xFFE7A0, fog: false })));
-    var halo = new T.Sprite(new T.SpriteMaterial({ map: glow, transparent: true, depthWrite: false, fog: false, blending: T.AdditiveBlending, opacity: 0.85 }));
-    halo.scale.set(80, 80, 1); sun.add(halo);
-    sun.position.set(48, 34, -240);
+    sun.add(new T.Mesh(new T.SphereGeometry(7, 24, 16), new T.MeshBasicMaterial({ color: 0xEEF3FF, fog: false })));
+    var halo = new T.Sprite(new T.SpriteMaterial({ map: moonGlow, transparent: true, depthWrite: false, fog: false, blending: T.AdditiveBlending, opacity: 0.6 }));
+    halo.scale.set(70, 70, 1); sun.add(halo);
+    sun.position.set(140, 130, -240);
     scene.add(sun);
 
+    /* ---------- stars ---------- */
+    var sN = small ? 500 : 1100, spos = new Float32Array(sN * 3);
+    for (var si = 0; si < sN; si++) {
+      var th = rnd(si * 1.7) * Math.PI * 2, ph = Math.acos(0.15 + rnd(si * 2.3) * 0.85);
+      spos[si * 3] = 400 * Math.sin(ph) * Math.cos(th);
+      spos[si * 3 + 1] = 400 * Math.cos(ph);
+      spos[si * 3 + 2] = 400 * Math.sin(ph) * Math.sin(th);
+    }
+    var stG = new T.BufferGeometry(); stG.setAttribute('position', new T.BufferAttribute(spos, 3));
+    var stars = new T.Points(stG, new T.PointsMaterial({ color: 0xDCE6FF, size: 1.4, sizeAttenuation: false, transparent: true, opacity: 0.85, fog: false, depthWrite: false }));
+    scene.add(stars);
+
     /* ---------- mountain ridges ---------- */
-    var rock = new T.Color(0x8C9A93), snow = new T.Color(0xF6F7F3), c = new T.Color();
+    var rock = new T.Color(0x34443F), snow = new T.Color(0xBFCCDA), c = new T.Color();
     function ridge(o) {
       var g = new T.PlaneGeometry(o.w || 360, o.d, small ? 46 : 84, small ? 14 : 26);
       g.rotateX(-Math.PI / 2);
@@ -98,24 +111,24 @@
       m.position.set(0, o.y || 0, o.z);
       scene.add(m);
     }
-    ridge({ z: -190, d: 110, a: 44, s: 13, c: 0x4E8573, sn: 1, w: 520 });
-    ridge({ z: -120, d: 90, a: 28, s: 9, c: 0x2F6A58, sn: 1, w: 440 });
-    ridge({ z: -62, d: 70, a: 16, s: 4, c: 0x1B4D40, sn: 0, valley: 22 });
-    ridge({ z: 40, d: 60, a: 10, s: 1, c: 0x0E2C25, sn: 0, valley: 22 });
+    ridge({ z: -190, d: 110, a: 44, s: 13, c: 0x16302B, sn: 1, w: 520 });
+    ridge({ z: -120, d: 90, a: 28, s: 9, c: 0x0F2722, sn: 1, w: 440 });
+    ridge({ z: -62, d: 70, a: 16, s: 4, c: 0x0A1E1A, sn: 0, valley: 22 });
+    ridge({ z: 40, d: 60, a: 10, s: 1, c: 0x050F0D, sn: 0, valley: 22 });
 
     // valley floor
     var floorG = new T.PlaneGeometry(400, 160, 40, 16); floorG.rotateX(-Math.PI / 2);
     var fp = floorG.attributes.position;
     for (i = 0; i < fp.count; i++) fp.setY(i, Math.sin(fp.getX(i) * 0.05) * Math.cos(fp.getZ(i) * 0.07) * 0.6 - 0.4);
     floorG.computeVertexNormals();
-    var floor = new T.Mesh(floorG, new T.MeshStandardMaterial({ color: 0x1D5143, flatShading: true, roughness: 1 }));
+    var floor = new T.Mesh(floorG, new T.MeshStandardMaterial({ color: 0x0B231E, flatShading: true, roughness: 1 }));
     floor.position.z = -10;
     scene.add(floor);
 
     // pine trees scattered on the floor edges
     var treeN = small ? 70 : 160;
     var treeG = new T.ConeGeometry(1, 3.2, 6); treeG.translate(0, 1.6, 0);
-    var trees = new T.InstancedMesh(treeG, new T.MeshStandardMaterial({ color: 0x123A30, flatShading: true, roughness: 1 }), treeN);
+    var trees = new T.InstancedMesh(treeG, new T.MeshStandardMaterial({ color: 0x07201A, flatShading: true, roughness: 1 }), treeN);
     var dm = new T.Object3D(), placed = 0;
     for (i = 0; placed < treeN && i < treeN * 4; i++) {
       var tx = (rnd(i * 3.1) - 0.5) * 200, tz = -40 + rnd(i * 7.7) * 70;
@@ -132,8 +145,8 @@
     var houseN = small ? 18 : 30;
     var bodyG = new T.BoxGeometry(1, 1, 1); bodyG.translate(0, 0.5, 0);
     var roofG = new T.ConeGeometry(0.82, 0.7, 4); roofG.rotateY(Math.PI / 4); roofG.translate(0, 0.35, 0);
-    var bodies = new T.InstancedMesh(bodyG, new T.MeshStandardMaterial({ color: 0xEDE4D3, roughness: 0.9 }), houseN);
-    var roofs = new T.InstancedMesh(roofG, new T.MeshStandardMaterial({ color: 0xA8352A, flatShading: true, roughness: 0.8 }), houseN);
+    var bodies = new T.InstancedMesh(bodyG, new T.MeshStandardMaterial({ color: 0x8A8476, roughness: 0.9 }), houseN);
+    var roofs = new T.InstancedMesh(roofG, new T.MeshStandardMaterial({ color: 0x7A2A22, flatShading: true, roughness: 0.8 }), houseN);
     var winPos = [], houses = [];
     for (i = 0; i < houseN; i++) {
       var a = rnd(i * 5.3) * Math.PI * 2, r = 2 + Math.sqrt(rnd(i * 2.9)) * 16;
@@ -149,8 +162,9 @@
       for (var k2 = 0; k2 < wn; k2++) winPos.push(hx + (rnd(i + k2 * 11) - 0.5) * w * 0.7, 0.7 + rnd(i * k2 + 2) * (hh - 1), hz + d / 2 + 0.05);
     }
     scene.add(bodies); scene.add(roofs);
+    var townGlow = new T.PointLight(0xFFA94D, 2.2, 70, 2); townGlow.position.set(TOWN.x, 8, TOWN.z + 4); scene.add(townGlow);
     var wg = new T.BufferGeometry(); wg.setAttribute('position', new T.BufferAttribute(new Float32Array(winPos), 3));
-    var windows = new T.Points(wg, new T.PointsMaterial({ color: 0xFFD27A, size: 0.55, transparent: true, opacity: 0.95 }));
+    var windows = new T.Points(wg, new T.PointsMaterial({ map: glow, color: 0xFFC766, size: 1.3, transparent: true, depthWrite: false, blending: T.AdditiveBlending, opacity: 0.95 }));
     scene.add(windows);
 
     /* ---------- map pins + pulse rings ---------- */
@@ -163,7 +177,7 @@
     for (i = 0; i < pinCount; i++) {
       var hs = houses[Math.floor(i * houses.length / pinCount + 1) % houses.length];
       var col = pinColors[i % pinColors.length];
-      var mat = new T.MeshStandardMaterial({ color: col, emissive: col, emissiveIntensity: 0.45, roughness: 0.35, metalness: 0.1 });
+      var mat = new T.MeshStandardMaterial({ color: col, emissive: col, emissiveIntensity: 0.8, roughness: 0.35, metalness: 0.1 });
       var pin = new T.Group();
       pin.add(new T.Mesh(headG, mat));
       pin.add(new T.Mesh(tipG, mat));
@@ -183,7 +197,7 @@
 
     /* ---------- signal arcs between pins (the "online" layer) ---------- */
     var arcs = [];
-    var arcMat = new T.LineBasicMaterial({ color: 0xFFE3A3, transparent: true, opacity: 0.45 });
+    var arcMat = new T.LineBasicMaterial({ color: 0xFFD27A, transparent: true, opacity: 0.55 });
     var pulseMat = new T.SpriteMaterial({ map: glow, transparent: true, depthWrite: false, blending: T.AdditiveBlending });
     for (i = 0; i < pins.length; i++) {
       var A = pins[i].g.position, B = pins[(i + 1) % pins.length].g.position;
@@ -200,7 +214,7 @@
       var cg = new T.Group();
       var puffs = 4 + Math.floor(rnd(i * 2.2) * 4);
       for (var pf = 0; pf < puffs; pf++) {
-        var spr = new T.Sprite(new T.SpriteMaterial({ map: soft, transparent: true, depthWrite: false, opacity: 0.55, color: 0xFFF1DE }));
+        var spr = new T.Sprite(new T.SpriteMaterial({ map: soft, transparent: true, depthWrite: false, opacity: 0.16, color: 0x9FB4C0 }));
         var sc = 14 + rnd(i * 10 + pf) * 16; spr.scale.set(sc, sc * 0.55, 1);
         spr.position.set((pf - puffs / 2) * 7 + rnd(pf + i) * 4, rnd(pf * 3 + i) * 3, rnd(pf * 7 + i) * 4);
         cg.add(spr);
@@ -289,7 +303,8 @@
       flies.position.y = Math.sin(time * 0.5) * 1.2;
       flies.material.opacity = 0.65 + Math.sin(time * 2.1) * 0.25;
       windows.material.opacity = 0.85 + Math.sin(time * 3.3) * 0.08;
-      halo.material.opacity = 0.75 + Math.sin(time * 0.7) * 0.1;
+      halo.material.opacity = 0.55 + Math.sin(time * 0.7) * 0.08;
+      stars.material.opacity = 0.75 + Math.sin(time * 1.3) * 0.15;
 
       renderer.render(scene, camera);
       if (sign && !reduce && window.innerWidth > 860) {
