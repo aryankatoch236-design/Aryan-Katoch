@@ -133,3 +133,23 @@ textarea{resize:vertical}
   .steps,.pair{grid-template-columns:1fr}
   .card{padding:22px}
 }
+
+/* 3D mountain hero */
+.hero{position:relative;overflow:hidden;color:#fff;padding:64px 0 150px;min-height:min(92vh,800px);background:linear-gradient(180deg,#0E2A24 0%,#1B4F42 22%,#E9B44C 42%,#E9B44C 100%)}
+#scene{position:absolute;inset:0;width:100%;height:100%;z-index:0;display:block}
+.hero::after{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;background:linear-gradient(90deg,rgba(9,28,23,.84) 0%,rgba(9,28,23,.55) 45%,rgba(9,28,23,0) 78%)}
+.hero-grid{position:relative;z-index:2}
+.hero h1{color:#fff}
+.hero .lead{color:#DCE6E1}
+.hero .btn-solid{background:var(--gold);color:var(--ink)}
+.hero .btn-solid:hover{background:#f6c658}
+.hero .btn-line{border-color:#fff;color:#fff}
+.hero .btn-line:hover{background:rgba(255,255,255,.14)}
+.hero .facts{border-top-color:rgba(255,255,255,.28);color:#C9D8D2}
+.hero .facts strong{color:#fff}
+.sign{outline:1px solid rgba(255,255,255,.3);transition:transform .15s ease-out}
+@media (max-width:860px){
+  .hero{padding:44px 0 130px}
+  .hero::after{background:rgba(9,28,23,.62)}
+}
+@media (prefers-reduced-motion:reduce){.sign{transition:none}}
