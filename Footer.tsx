@@ -10,7 +10,7 @@ export const Footer: React.FC = () => {
   };
 
   return (
-    <footer className="border-t border-white/10 pt-12 pb-28 sm:pb-12 px-4 sm:px-8 max-w-7xl mx-auto relative z-10 select-none">
+    <footer className="border-t border-white/10 py-12 px-4 sm:px-8 max-w-7xl mx-auto relative z-10 select-none">
       <div className="flex flex-col md:flex-row items-center justify-between gap-6">
         <div className="text-center md:text-left space-y-1">
           <div className="text-lg font-display font-black text-white tracking-wider">{PERSONAL_INFO.name}</div>

@@ -94,7 +94,7 @@ export const CaseStudySection: React.FC<CaseStudySectionProps> = ({ onOpenLivePr
               onMouseEnter={() => onHoverStateChange?.('PREVIEW')}
               onMouseLeave={() => onHoverStateChange?.('')}
             >
-              <img src={deviceImg} alt="Adhyayan Academy website on laptop and phone" loading="lazy" width={1229} height={820} className="w-full h-auto group-hover:scale-105 transition-transform duration-700" />
+              <img src={deviceImg} alt="Adhyayan Academy website on laptop and phone" loading="lazy" className="w-full h-auto group-hover:scale-105 transition-transform duration-700" />
               <div className="absolute inset-0 bg-obsidian/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
                 <span className="px-4 py-2 rounded-full bg-brand-gold text-black font-mono font-bold text-[11px] tracking-widest flex items-center gap-1.5">
                   <Play className="w-3 h-3 fill-black" /> LIVE PREVIEW
@@ -112,7 +112,7 @@ export const CaseStudySection: React.FC<CaseStudySectionProps> = ({ onOpenLivePr
                 <div className="text-[10px] font-mono text-brand-gold uppercase mb-0.5">WHAT ARVINEX DELIVERED</div>
                 <div className="text-sm text-gray-200">{adhyayan.contribution}</div>
               </div>
-              <a href={adhyayan.liveUrl} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 py-2 text-xs font-mono text-brand-gold hover:underline">
+              <a href={adhyayan.liveUrl} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 text-xs font-mono text-brand-gold hover:underline">
                 VISIT LIVE SITE <ExternalLink className="w-3.5 h-3.5" />
               </a>
             </div>

@@ -48,7 +48,7 @@ export const FloatingNav: React.FC<FloatingNavProps> = ({
   return (
     <>
       <header
-        className={`fixed top-0 left-0 right-0 z-[46] px-4 sm:px-6 xl:px-8 py-4 sm:py-6 transition-all duration-500 ${
+        className={`fixed top-0 left-0 right-0 z-40 px-4 sm:px-6 xl:px-8 py-4 sm:py-6 transition-all duration-500 ${
           scrolled ? 'py-3' : 'py-6'
         }`}
       >
@@ -64,7 +64,7 @@ export const FloatingNav: React.FC<FloatingNavProps> = ({
               onClick={handleLogoClick}
               onMouseEnter={() => sound.playHover(900)}
               title="Aryan Katoch — click 3x for a surprise"
-              className="group flex items-center space-x-2 px-3 py-2 sm:py-1 rounded-full bg-white/5 hover:bg-brand-ember/20 border border-white/10 hover:border-brand-gold/40 transition-all"
+              className="group flex items-center space-x-2 px-3 py-1 rounded-full bg-white/5 hover:bg-brand-ember/20 border border-white/10 hover:border-brand-gold/40 transition-all"
             >
               <span className="font-display font-extrabold text-sm tracking-wider text-brand-gold group-hover:scale-110 transition-transform">
                 AK
@@ -129,8 +129,8 @@ export const FloatingNav: React.FC<FloatingNavProps> = ({
       </header>
 
       {mobileMenuOpen && (
-        <div className="fixed inset-0 z-[45] bg-obsidian/95 backdrop-blur-2xl lg:hidden flex flex-col justify-start px-6 sm:px-8 pt-24 pb-28 space-y-5 overflow-y-auto animate-fadeIn">
-          <div className="text-center space-y-1 mb-1">
+        <div className="fixed inset-0 z-30 bg-obsidian/95 backdrop-blur-2xl lg:hidden flex flex-col justify-center px-8 space-y-6 animate-fadeIn">
+          <div className="text-center space-y-2 mb-4">
             <div className="text-xs font-mono text-brand-gold tracking-widest uppercase">
               {PERSONAL_INFO.role}
             </div>
@@ -142,12 +142,12 @@ export const FloatingNav: React.FC<FloatingNavProps> = ({
             </div>
           </div>
 
-          <div className="flex flex-col space-y-2.5">
+          <div className="flex flex-col space-y-3">
             {NAVIGATION_LINKS.map((link) => (
               <button
                 key={link.id}
                 onClick={() => scrollTo(link.href)}
-                className="text-left py-2.5 px-4 rounded-xl bg-white/5 border border-white/10 text-sm sm:text-base font-mono text-gray-200 hover:text-brand-gold hover:border-brand-gold/40 transition-all flex items-center justify-between"
+                className="text-left py-3 px-4 rounded-xl bg-white/5 border border-white/10 text-base font-mono text-gray-200 hover:text-brand-gold hover:border-brand-gold/40 transition-all flex items-center justify-between"
               >
                 <span>{link.label}</span>
                 <ArrowUpRight className="w-4 h-4 text-gray-500" />
