@@ -409,8 +409,8 @@ export const SceneContainer: React.FC<SceneContainerProps> = ({
         return -f * 65;
       };
       strategyGroup.position.y = at('strategy', -25);
-      strategyGroup.position.z = isSmall() ? -4 : -1.5;
-      strategyGroup.scale.setScalar(isSmall() ? 0.7 : 1);
+      strategyGroup.position.z = window.innerWidth < 640 ? -7 : isSmall() ? -4 : -1.5;
+      strategyGroup.scale.setScalar(window.innerWidth < 640 ? 0.55 : isSmall() ? 0.7 : 1);
       tunnelGroup.position.y = at('contact', -50) + 4;
     };
     const onResize = () => {

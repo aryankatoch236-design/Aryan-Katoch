@@ -114,7 +114,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ onHoverStateChan
                 <div className="p-3 rounded-2xl bg-brand-ember/20 text-brand-gold shrink-0"><Icon className="w-6 h-6" /></div>
                 <div className="min-w-0">
                   <div className="text-xs font-mono text-gray-400 uppercase">{label}</div>
-                  <a href={href} className="text-base font-bold text-white hover:text-brand-gold transition-colors break-all">{value}</a>
+                  <a href={href} className="text-sm sm:text-base font-bold text-white hover:text-brand-gold transition-colors [overflow-wrap:anywhere]">{value}</a>
                 </div>
               </div>
               <button type="button" onClick={() => copy(value, key)} className="p-2 rounded-xl bg-white/5 hover:bg-white/10 text-gray-400 hover:text-white shrink-0" title={`Copy ${label.toLowerCase()}`}>

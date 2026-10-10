@@ -99,7 +99,7 @@ export const StrategySection: React.FC<StrategySectionProps> = ({ selectedNodeId
             {pair && (
               <div className="p-4 rounded-xl bg-obsidian/80 border border-white/10 flex flex-wrap items-center justify-between gap-2 text-xs font-mono text-gray-400">
                 <span>WORKS BEST TOGETHER WITH</span>
-                <button type="button" onClick={() => { sound.playClick(); onSelectNode(pair.id); }} className="font-bold hover:underline" style={{ color: pair.color }}>
+                <button type="button" onClick={() => { sound.playClick(); onSelectNode(pair.id); }} className="font-bold hover:underline py-2 -my-2" style={{ color: pair.color }}>
                   {pair.label} →
                 </button>
               </div>

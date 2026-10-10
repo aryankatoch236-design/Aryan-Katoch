@@ -40,7 +40,7 @@ export const IntroSequence: React.FC<IntroSequenceProps> = ({ onComplete }) => {
 
   return (
     <div
-      className={`fixed inset-0 z-50 bg-[#040508] flex flex-col items-center justify-center transition-opacity duration-700 pointer-events-none select-none ${
+      className={`fixed inset-0 z-50 bg-[#060504] flex flex-col items-center justify-center transition-opacity duration-700 pointer-events-none select-none ${
         phase === 3 ? 'opacity-0' : 'opacity-100'
       }`}
     >
