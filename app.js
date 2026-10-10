@@ -65,11 +65,47 @@
   });
 })();
 
+// Reveal sections as they scroll into view (also catches anything skipped by a fast scroll or anchor jump)
+(function () {
+  var pending = Array.prototype.slice.call(document.querySelectorAll('.reveal'));
+  function show(el, delay) {
+    el.style.transitionDelay = delay + 'ms';
+    el.classList.add('in');
+    setTimeout(function () { el.classList.add('settled'); el.style.transitionDelay = ''; }, 1200);
+  }
+  var ticking = false;
+  function check() {
+    ticking = false;
+    var limit = window.innerHeight * 0.94, batch = 0;
+    pending = pending.filter(function (el) {
+      if (el.getBoundingClientRect().top < limit) { show(el, Math.min(batch++, 4) * 90); return false; }
+      return true;
+    });
+    if (!pending.length) window.removeEventListener('scroll', onScroll);
+  }
+  function onScroll() { if (!ticking) { ticking = true; requestAnimationFrame(check); } }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('resize', onScroll);
+  check();
+})();
+
+// Copy email button
+(function () {
+  document.querySelectorAll('.copy[data-copy]').forEach(function (b) {
+    b.addEventListener('click', function () {
+      var txt = b.getAttribute('data-copy');
+      var done = function () { b.textContent = 'Copied'; setTimeout(function () { b.textContent = 'Copy'; }, 1800); };
+      if (navigator.clipboard) navigator.clipboard.writeText(txt).then(done, function () {});
+    });
+  });
+})();
+
 // Gentle 3D tilt on cards (mouse devices only, skipped for reduced motion)
 (function () {
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches || !window.matchMedia('(hover: hover)').matches) return;
-  document.querySelectorAll('.row, .people article').forEach(function (el) {
+  document.querySelectorAll('.row, .people article, .pillar').forEach(function (el) {
     el.addEventListener('pointermove', function (e) {
+      if (!el.classList.contains('settled') && el.classList.contains('reveal')) return;
       var r = el.getBoundingClientRect();
       var x = (e.clientX - r.left) / r.width - 0.5, y = (e.clientY - r.top) / r.height - 0.5;
       el.style.transform = 'perspective(900px) rotateY(' + (x * 7).toFixed(2) + 'deg) rotateX(' + (-y * 7).toFixed(2) + 'deg) translateY(-4px)';
